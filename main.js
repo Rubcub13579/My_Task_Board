@@ -13,8 +13,6 @@ function addNote(){
     clearUI()
 }
 
-
-
 function addData(){
     const id = allItems.length + 1;
     const note = noteBox.value;
@@ -24,8 +22,6 @@ function addData(){
     const oneNote = {id,note,date,time};
     allItems.push(oneNote);
 }
-
-
 
 function displayDataInCards(){
     let content = "";
@@ -77,8 +73,6 @@ function deleteItem(id){
 
 
 
-
-// add earse button
 // notification one day before deleting note
 // JSON till time and date runs out
 // ID FIN (EX): Task Number 1/2/3/4/5 not 1/2/3/3/3
