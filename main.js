@@ -3,35 +3,58 @@ const dateBox = document.getElementById("dateBox");
 const timeBox = document.getElementById("timeBox");
 const noteContainer = document.getElementById("noteContainer");
 
-const allItems = [];
+let allItems = [];
 
 
+loadData();
 
-function addNote(){
+function addNote() {
     addData();
     displayDataInCards();
-    clearUI()
+    clearUI();
+    saveData();
 }
 
+function addData() {
+
+    noteBox.style.backgroundColor = "white";
+    dateBox.style.backgroundColor = "white";
+    timeBox.style.backgroundColor = "white";
 
 
-function addData(){
     const id = allItems.length + 1;
     const note = noteBox.value;
     const date = dateBox.value;
     const time = timeBox.value;
 
-    const oneNote = {id,note,date,time};
+    if (noteBox.value === "") {
+        alert("Please Enter A Note!!!");
+        noteBox.focus();
+        noteBox.style.backgroundColor = "red";
+        return;
+    }
+    if (dateBox.value === "") {
+        alert("Please Enter Date!!!");
+        dateBox.focus();
+        dateBox.style.backgroundColor = "red";
+        return;
+    }
+    if (timeBox.value === "") {
+        alert("Please Enter A Time!!!");
+        timeBox.focus();
+        timeBox.style.backgroundColor = "red";
+        return;
+    }
+
+    const oneNote = { id, note, date, time };
     allItems.push(oneNote);
 }
 
-
-
-function displayDataInCards(){
+function displayDataInCards() {
     let content = "";
-    for (const item of allItems){
+    for (const item of allItems) {
         content += `
-        <div>
+        <div class = "list">
             <span>Task Number ${item.id}</span>
             <br>
             <span>${item.note}</span>
@@ -39,7 +62,7 @@ function displayDataInCards(){
             <span>${item.date}</span>
             <br>
             <span>${item.time}</span>
-            <button onclick="deleteItem(${item.id})"> ❌ </button>
+            <button class = "deleteButton" onclick="deleteItem(${item.id})"> ❌ </button>
         </div>
         `;
     }
@@ -48,40 +71,62 @@ function displayDataInCards(){
 }
 
 
-function clearUI(){
-    noteBox.value = null
-    dateBox.value = null
-    timeBox.value = null
+function clearUI() {
 
-    noteBox.focus();
+    if (noteBox.value !== "" && dateBox.value !== "" && timeBox.value !== "") {
+        noteBox.value = ""
+        dateBox.value = ""
+        timeBox.value = ""
+        noteBox.focus();
+    }
+
 
 }
 
 
-function deleteItem(id){
+function deleteItem(id) {
     const sure = confirm("Are you sure?");
     if (!sure) return;
 
     let index = 0;
-    for (let i = 0; i < allItems.length; i++){
-        if (allItems[i].id === id){
+    for (let i = 0; i < allItems.length; i++) {
+        if (allItems[i].id === id) {
             index = i;
             break;
         }
     }
     allItems.splice(index, 1);
+    saveData();
     displayDataInCards();
 }
 
+function erase() {
+    noteBox.value = ""
+    dateBox.value = ""
+    timeBox.value = ""
+    noteBox.focus();
+}
 
+function saveData(){
+    const json = JSON.stringify(allItems);
+    localStorage.setItem("My-Task-Board", json);
+}
 
+function loadData() {
+    const json = localStorage.getItem("My-Task-Board");
+    
+    if (json){
+        allItems = JSON.parse(json);
+    }
+    displayDataInCards();
+}
 
+// notification one day before deleting note ??
+// JSON
 
+// till time and date runs out ??
 
-// add earse button
-// notification one day before deleting note
-// JSON till time and date runs out
-// ID FIN (EX): Task Number 1/2/3/4/5 not 1/2/3/3/3
-// Forse to enter input
+// ID FIX (EX): Task Number 1/2/3/4/5 not 1/2/3/3/3
 // CSS
-// EDIT
+// EDIT button
+// not letting to enter expired dates
