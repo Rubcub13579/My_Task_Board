@@ -138,6 +138,8 @@ function loadData() {
 
 // function edit(id){}
 
+// fix CSS for smaller and phone version
+
 // notification one day before deleting note ??
 // till time and date runs out ??
 

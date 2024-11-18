@@ -3,6 +3,7 @@
     src: url(assets/fonts/Notethis.ttf);
 }
 
+
 body,
 input,
 button {
@@ -11,15 +12,19 @@ button {
 }
 
 
-
 #inputContainer {
     background-image: url(assets/imgs/notePage.png);
     background-repeat: no-repeat;
-    background-size: 200px;
-    height: 200px;
-    background-position: center;
+    background-size: contain;
+    /* Ensures the whole image fits within the container */
+    background-position: center center;
+    /* Centers the background image */
+    /* Optional: keeps the background fixed during scrolling */
+    height: 500px;
+    /* Set a fixed height or adjust according to the layout */
+    width: 100%;
+    /* Ensure it takes the full width of the container */
 }
-
 
 #noteContainer {
     display: flex;
@@ -27,7 +32,7 @@ button {
     /* Allows items to wrap to a new row */
     gap: 10px;
     justify-content: center;
-    max-height: 400px;
+    max-height: 500px;
     /* Adjust height to control visible area */
     overflow-y: auto;
     /* Enables vertical scrolling */
@@ -52,7 +57,7 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 100px;
     box-sizing: border-box;
     overflow-wrap: break-word;
     word-break: break-word;
@@ -101,4 +106,8 @@ transition: opacity 0.5s ease, transform 0.5s ease;
 
 .fade-in {
     opacity: 1;
+}
+
+span,button,input {
+    font-size: x-large;
 }
