@@ -1,16 +1,19 @@
+
 const noteBox = document.getElementById("noteBox");
 const dateBox = document.getElementById("dateBox");
 const timeBox = document.getElementById("timeBox");
 const noteContainer = document.getElementById("noteContainer");
 
-const allItems = [];
+let allItems = [];
 
 
+loadData();
 
 function addNote() {
     addData();
     displayDataInCards();
-    clearUI()
+    clearUI();
+    saveData();
 }
 
 function addData() {
@@ -44,27 +47,57 @@ function addData() {
         return;
     }
 
+    
+
     const oneNote = { id, note, date, time };
     allItems.push(oneNote);
 }
 
 function displayDataInCards() {
+    
+    for (let i = 0; i < allItems.length; i++) {
+        index = 1;
+        if (allItems[i].id !== i + 1) {
+            index += i;
+            allItems[i].id = index;
+            break;
+        }
+    }
+    
     let content = "";
     for (const item of allItems) {
         content += `
-        <div>
-            <span>Task Number ${item.id}</span>
+        <div class = "list">
+            <span >Task Number ${item.id}</span>
             <br>
-            <span>${item.note}</span>
             <br>
+            <span class = "note">${item.note}</span>
             <span>${item.date}</span>
             <br>
             <span>${item.time}</span>
-            <button onclick="deleteItem(${item.id})"> ❌ </button>
+            <br>
+            <div class="button-container">
+                <button onclick="deleteItem(${item.id})"> ❌ </button>
+                <button onclick="edit(${item.id})" > 📝 </button>
+            </div>
         </div>
         `;
+        for (let i = 0; i < allItems.length; i++) {
+            index = 1;
+            if (allItems[i].id !== i + 1) {
+                index += i;
+                allItems[i].id = index;
+                break;
+            }
+        }
     }
     noteContainer.innerHTML = content;
+    const lists = document.querySelectorAll(".list");
+    lists.forEach((list, index) => {
+        setTimeout(() => {
+            list.classList.add("fade-in");
+        }, index * 100);
+    });
 
 }
 
@@ -94,8 +127,10 @@ function deleteItem(id) {
         }
     }
     allItems.splice(index, 1);
+    saveData();
     displayDataInCards();
 }
+
 
 function erase() {
     noteBox.value = ""
@@ -104,11 +139,33 @@ function erase() {
     noteBox.focus();
 }
 
+function saveData() {
+    const json = JSON.stringify(allItems);
+    localStorage.setItem("My-Task-Board", json);
+}
+
+function loadData() {
+    const json = localStorage.getItem("My-Task-Board");
+
+    if (json) {
+        allItems = JSON.parse(json);
+    }
+    displayDataInCards();
+}
 
 
-// notification one day before deleting note
-// JSON till time and date runs out
-// ID FIN (EX): Task Number 1/2/3/4/5 not 1/2/3/3/3
-// CSS
-// EDIT button
-// not letting to enter expired dates
+
+
+
+
+// // function edit(id){}
+
+// // fix CSS for smaller and phone version
+
+// // notification one day before deleting note ??
+// // till time and date runs out ??
+
+
+// // EDIT button
+
+// // not letting to enter expired dates

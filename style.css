@@ -1,1 +1,113 @@
-body {background-color: green;}
+@font-face {
+    font-family: noteFont;
+    src: url(assets/fonts/Notethis.ttf);
+}
+
+
+body,
+input,
+button {
+    font-family: noteFont;
+    text-align: center;
+}
+
+
+#inputContainer {
+    background-image: url(assets/imgs/notePage.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* Ensures the whole image fits within the container */
+    background-position: center center;
+    /* Centers the background image */
+    /* Optional: keeps the background fixed during scrolling */
+    height: 500px;
+    /* Set a fixed height or adjust according to the layout */
+    width: 100%;
+    /* Ensure it takes the full width of the container */
+}
+
+#noteContainer {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows items to wrap to a new row */
+    gap: 10px;
+    justify-content: center;
+    max-height: 500px;
+    /* Adjust height to control visible area */
+    overflow-y: auto;
+    /* Enables vertical scrolling */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.list {
+    background-image: url(assets/imgs/sticker.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center top;
+    flex: 1 1 calc(33.33% - 20px);
+    /* Ensures three items per row with spacing */
+    max-width: calc(33.33% - 20px);
+    /* Limit width to exactly three per row */
+    height: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    /* Stacks buttons vertically */
+    gap: 5px;
+    /* Adds space between buttons */
+    margin-top: 10px;
+    /* Optional: Adds space between text and buttons */
+}
+
+.list:hover .button-container button {
+    opacity: 1;
+    /* Show buttons when .list is hovered */
+}
+
+.button-container button {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    width: 50%;
+    /* Make buttons full width */
+    padding: 5px;
+    /* Adjust padding as needed */
+    box-sizing: border-box;
+
+}
+
+.note {
+    display: block;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 50%;
+    text-align: center;
+}
+
+.list{
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+span,button,input {
+    font-size: x-large;
+}
