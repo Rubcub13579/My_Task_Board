@@ -169,3 +169,16 @@ function loadData() {
 // // EDIT button
 
 // // not letting to enter expired dates
+// function edit(id){}
+
+// fix CSS for smaller and phone version
+
+// notification one day before deleting note ??
+// till time and date runs out ??
+
+
+// ID FIX (EX): Task Number 1/2/3/4/5 not 1/2/3/3/3
+
+// EDIT button
+
+// not letting to enter expired dates
