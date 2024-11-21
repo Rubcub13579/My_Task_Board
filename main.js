@@ -67,7 +67,18 @@ function idCheck(){
 
 function displayDataInCards() {
     
+<<<<<<< HEAD
     idCheck();
+=======
+    for (let i = 0; i < allItems.length; i++) {
+        index = 1;
+        if (allItems[i].id !== i + 1) {
+            index += i;
+            allItems[i].id = index;
+            break;
+        }
+    }
+>>>>>>> ed3dce13c558e334552c2873acabdf92a6232fd2
     
     let content = "";
     for (const item of allItems) {
@@ -87,9 +98,20 @@ function displayDataInCards() {
             </div>
         </div>
         `;
+<<<<<<< HEAD
         
         idCheck();
         
+=======
+        for (let i = 0; i < allItems.length; i++) {
+            index = 1;
+            if (allItems[i].id !== i + 1) {
+                index += i;
+                allItems[i].id = index;
+                break;
+            }
+        }
+>>>>>>> ed3dce13c558e334552c2873acabdf92a6232fd2
     }
     noteContainer.innerHTML = content;
     const lists = document.querySelectorAll(".list");
