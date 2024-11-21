@@ -47,11 +47,28 @@ function addData() {
         return;
     }
 
+    
+
     const oneNote = { id, note, date, time };
     allItems.push(oneNote);
 }
 
+function idCheck(){
+    for (let i = 0; i < allItems.length; i++) {
+        index = 1;
+        if (allItems[i].id !== i + 1) {
+            index += i;
+            allItems[i].id = index;
+            break;
+        }
+    }
+}
+
+
 function displayDataInCards() {
+    
+    idCheck();
+    
     let content = "";
     for (const item of allItems) {
         content += `
@@ -70,6 +87,9 @@ function displayDataInCards() {
             </div>
         </div>
         `;
+        
+        idCheck();
+        
     }
     noteContainer.innerHTML = content;
     const lists = document.querySelectorAll(".list");
@@ -136,6 +156,19 @@ function loadData() {
 
 
 
+
+
+// // function edit(id){}
+
+// // fix CSS for smaller and phone version
+
+// // notification one day before deleting note ??
+// // till time and date runs out ??
+
+
+// // EDIT button
+
+// // not letting to enter expired dates
 // function edit(id){}
 
 // fix CSS for smaller and phone version
