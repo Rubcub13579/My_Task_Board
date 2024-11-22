@@ -4,6 +4,20 @@ const dateBox = document.getElementById("dateBox");
 const timeBox = document.getElementById("timeBox");
 const noteContainer = document.getElementById("noteContainer");
 
+
+
+function getRightDate(){
+    const correctDate = new Date;
+    const day = String(correctDate.getDate()).padStart(2, '0');
+    const month = String(correctDate.getMonth()+ 1).padStart(2, '0');
+    const year = String(correctDate.getFullYear());
+    dateBox.min = `${year}-${month}-${day}`;
+};
+
+
+getRightDate();
+
+
 let allItems = [];
 
 
@@ -158,11 +172,13 @@ function loadData() {
 
 
 
-// // function edit(id){}
+// function edit(id){}
 
-// // notification one day before deleting note ??
-// // till time and date runs out ??
+/*
+till time and date runs out ??
+notification one day before deleting note ??
+*/
 
-// // EDIT button
-
-// // not letting to enter expired dates
+/*
+EDIT button
+*/
