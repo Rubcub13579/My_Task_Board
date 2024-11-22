@@ -67,18 +67,7 @@ function idCheck(){
 
 function displayDataInCards() {
     
-<<<<<<< HEAD
     idCheck();
-=======
-    for (let i = 0; i < allItems.length; i++) {
-        index = 1;
-        if (allItems[i].id !== i + 1) {
-            index += i;
-            allItems[i].id = index;
-            break;
-        }
-    }
->>>>>>> ed3dce13c558e334552c2873acabdf92a6232fd2
     
     let content = "";
     for (const item of allItems) {
@@ -98,20 +87,9 @@ function displayDataInCards() {
             </div>
         </div>
         `;
-<<<<<<< HEAD
         
         idCheck();
         
-=======
-        for (let i = 0; i < allItems.length; i++) {
-            index = 1;
-            if (allItems[i].id !== i + 1) {
-                index += i;
-                allItems[i].id = index;
-                break;
-            }
-        }
->>>>>>> ed3dce13c558e334552c2873acabdf92a6232fd2
     }
     noteContainer.innerHTML = content;
     const lists = document.querySelectorAll(".list");
@@ -182,25 +160,9 @@ function loadData() {
 
 // // function edit(id){}
 
-// // fix CSS for smaller and phone version
-
 // // notification one day before deleting note ??
 // // till time and date runs out ??
-
 
 // // EDIT button
 
 // // not letting to enter expired dates
-// function edit(id){}
-
-// fix CSS for smaller and phone version
-
-// notification one day before deleting note ??
-// till time and date runs out ??
-
-
-// ID FIX (EX): Task Number 1/2/3/4/5 not 1/2/3/3/3
-
-// EDIT button
-
-// not letting to enter expired dates
