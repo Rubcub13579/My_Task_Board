@@ -3,6 +3,18 @@
     src: url(assets/fonts/Notethis.ttf);
 }
 
+body {
+    background-image: url(assets/imgs/background.jpg);
+    background-size: cover;
+    /* makes it fill the whole viewport */
+    background-position: center;
+    /* keeps it centered */
+    height: 100vh;
+    /* ensures body is at least full viewport height */
+    margin: 0;
+    /* removes default body margin */
+}
+
 body,
 input,
 button {
